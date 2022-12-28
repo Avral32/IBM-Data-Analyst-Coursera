@@ -1,0 +1,102 @@
+
+-- Create PETSALE AND PET TABLES USING CREATE TABLE STATEMENT
+
+CREATE TABLE PETSALE (
+	ID INTEGER NOT NULL,
+	PET CHAR(20),
+	SALEPRICE DECIMAL(6,2),
+	PROFIT DECIMAL(6,2),
+	SALEDATE DATE
+
+   );
+   
+
+CREATE TABLE PET (
+ 	ID INTEGER NOT NULL,
+ 	ANIMAL VARCHAR(20),
+ 	QUANTITY INTEGER
+ 	
+	);
+	
+
+
+
+-- Insert column values to PETSALE
+
+INSERT INTO PETSALE 
+	VALUES 
+	(1, 'cat', 450.09, 100.47, '2018-05-29'),
+	(2,'Dog',666.66,150.76,'2018-06-01'),
+   (3,'Parrot',50.00,8.9,'2018-06-04'),
+   (4,'Hamster',60.60,12,'2018-06-11'),
+   (5, 'Goldfish', 48.48, 3.5, '2018-06-14');
+   
+-- Insert column values to PET
+
+	INSERT INTO PET 
+	VALUES 
+	(1, 'Cat', 3),
+	(2, 'Dog', 4),
+	(3, 'Hamster', 2);
+	
+	
+-- ALTER the properties of TABLES just created USING 
+-- ALTER TABLE DML STATEMENTS: 
+
+
+-- ADD NEW COLUMN QUANTITY TO THE PETSALE TABLE
+
+ALTER TABLE PETSALE 
+	ADD COLUMN QUANTITY INTEGER
+
+	
+-- NOW update the newly added QUANTITY column with some new values 
+
+
+
+UPDATE PETSALE SET QUANTITY = 9 WHERE ID = 1;
+UPDATE PETSALE SET QUANTITY = 3 WHERE ID = 2;
+UPDATE PETSALE SET QUANTITY = 2 WHERE ID = 3;
+UPDATE PETSALE SET QUANTITY = 6 WHERE ID = 4;
+UPDATE PETSALE SET QUANTITY = 24 WHERE ID = 5;
+
+
+
+
+-- NOW drop a certain column using DROP COLUMN 
+
+ALTER TABLE PETSALE 
+	DROP COLUMN PROFIT;
+	
+
+-- now change the data type of PET COLUMN TO varchar(20)
+
+ALTER TABLE PETSALE 
+	ALTER COLUMN PET 
+	SET DATA TYPE VARCHAR(20);
+
+
+
+--Task D: now ALTER using RENAME COLUMN 
+
+ALTER TABLE PETSALE 
+	RENAME COLUMN PET TO ANIMAL;  
+
+-- OR 
+ALTER TABLE PETSALE 
+		CHANGE PET ANIMAL VARCHAR(20);
+
+
+-- IMPORTANT!!!  /*  .... */ is used to comment a block of code out
+
+/*
+TRUNCATE PET TABLE USING TRUNCATE STATMENT - means remove all attributes of the given table 
+*/
+
+TRUNCATE TABLE PET IMMEDIATE;
+
+
+
+-- Now we can drop or delete the TABLE PET completely using DROP 
+
+DROP TABLE PET;
